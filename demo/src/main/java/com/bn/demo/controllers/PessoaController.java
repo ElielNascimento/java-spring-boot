@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/pessoas")
@@ -25,6 +26,11 @@ public class PessoaController {
         return  pessoaService.criarPessoa(pessoaModel);
     }
 
+
+    @GetMapping("/{id}")
+    public Optional<PessoaModel> buscarId(@PathVariable Long id){
+        return  pessoaService.buscarid(id);
+    }
 
 
 }
