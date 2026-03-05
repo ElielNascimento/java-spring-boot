@@ -1,17 +1,20 @@
 package com.bn.demo.models;
 
+import com.bn.demo.enums.EstudanteEnum;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "TBL_PESSOA")
-public class PessoaModel {
+public class EstudanteModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
-    public PessoaModel(){
+    private EstudanteEnum estudanteEnum;
+
+    public EstudanteModel(){
     }
 
     public Long getId() {
@@ -28,5 +31,13 @@ public class PessoaModel {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public EstudanteEnum getEstudanteEnum() {
+        return estudanteEnum;
+    }
+
+    public void setEstudanteEnum(EstudanteEnum estudanteEnum) {
+        this.estudanteEnum = estudanteEnum;
     }
 }

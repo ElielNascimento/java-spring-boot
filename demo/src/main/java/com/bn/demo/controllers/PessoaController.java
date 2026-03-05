@@ -1,7 +1,7 @@
 package com.bn.demo.controllers;
 
-import com.bn.demo.models.PessoaModel;
-import com.bn.demo.services.PessoaService;
+import com.bn.demo.models.EstudanteModel;
+import com.bn.demo.services.EstudanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,22 +14,22 @@ public class PessoaController {
 
 
     @Autowired
-    private PessoaService pessoaService;
+    private EstudanteService estudanteService;
 
     @GetMapping
-    public List<PessoaModel> findAll(){
-        return  pessoaService.findAll();
+    public List<EstudanteModel> findAll(){
+        return  estudanteService.findAll();
     }
 
     @PostMapping
-    public PessoaModel criarPessoa(@RequestBody PessoaModel pessoaModel){
-        return  pessoaService.criarPessoa(pessoaModel);
+    public EstudanteModel criarPessoa(@RequestBody EstudanteModel estudanteModel){
+        return  estudanteService.criarPessoa(estudanteModel);
     }
 
 
     @GetMapping("/{id}")
-    public Optional<PessoaModel> buscarId(@PathVariable Long id){
-        return  pessoaService.buscarid(id);
+    public Optional<EstudanteModel> buscarId(@PathVariable Long id){
+        return  estudanteService.buscarid(id);
     }
 
 
