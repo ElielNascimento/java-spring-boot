@@ -5,6 +5,7 @@ public enum EstudanteEnum {
 
     APROVADO,
     REPROVADO,
-    LASCADO;
+    LASCADO,
+    DEU BOM;
 
 }
