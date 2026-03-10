@@ -26,7 +26,14 @@ public class EstudanteService {
         return  estudanteRepository.findById(id);
     }
 
+    public EstudanteModel atualizar(Long id, EstudanteModel estudanteModel){
+        EstudanteModel model = estudanteRepository.findById(id).get();
+        model.setNome(estudanteModel.getNome());
+        return estudanteRepository.save(model);
+    }
 
-
+    public void deletar(Long id){
+        estudanteRepository.deleteById(id);
+    }
 
 }
