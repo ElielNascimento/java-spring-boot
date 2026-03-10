@@ -19,19 +19,24 @@ public class PessoaController {
     private EstudanteService estudanteService;
 
     @GetMapping
-    public List<EstudanteModel> findAll(){
-        return     estudanteService.findAll();
+    public ResponseEntity<List<EstudanteModel> > findAll(){
+          List<EstudanteModel> requeste = estudanteService.findAll();
+        return ResponseEntity.ok().body(requeste);
     }
 
     @PostMapping
-    public EstudanteModel criarPessoa(@RequestBody EstudanteModel estudanteModel){
-        return  estudanteService.criarPessoa(estudanteModel);
+    public ResponseEntity <EstudanteModel> criarPessoa(@RequestBody EstudanteModel estudanteModel){
+        EstudanteModel requeste = estudanteService.criarPessoa(estudanteModel);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
+                .path("/{id}").buildAndExpand(estudanteModel.getId())
+                .toUri();
+        return  ResponseEntity.created().body(requeste);
     }
 
-
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id){
+    public ResponseEntity<?> deletar (@PathVariable Long id){
         estudanteService.deletar(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")
