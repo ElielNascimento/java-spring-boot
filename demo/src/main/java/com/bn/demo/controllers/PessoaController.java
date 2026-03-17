@@ -30,7 +30,7 @@ public class PessoaController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}").buildAndExpand(estudanteModel.getId())
                 .toUri();
-        return  ResponseEntity.created().body(requeste);
+        return  ResponseEntity.created(uri).body(requeste);
     }
 
     @DeleteMapping("/{id}")
